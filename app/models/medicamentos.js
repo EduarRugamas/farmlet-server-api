@@ -1,8 +1,7 @@
 'use strict';
-const {
-  Model, DataTypes
-} = require('sequelize');
+const { Model, DataTypes} = require('sequelize');
 const sequelize = require('../db');
+
 
   const medicamentos = class medicamentos extends Model {
     /**
@@ -15,15 +14,13 @@ const sequelize = require('../db');
     }
   };
   medicamentos.init({
-    Nombre: DataTypes.STRING,
-    Descripcion: DataTypes.STRING,
-    Precio: DataTypes.FLOAT,
-    Imagen: DataTypes.STRING
+    nombre: DataTypes.STRING,
+    descripcion: DataTypes.STRING,
+    precio: DataTypes.FLOAT,
+    imagen: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'medicamentos',
   });
 
   module.exports = medicamentos;
-
-

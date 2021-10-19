@@ -6,12 +6,12 @@ dotev.config( {path: path.join(__dirname, '../../.env') } );
 
 const envVar = Joi.object()
     .keys({
-        NODE_ENV: Joi.string().valid('production', 'development').require(),
+        NODE_ENV: Joi.string().valid('production', 'development').required(),
         PORT: Joi.number().default(5000),
-        DATABASE_URL: Joi.string().require().description('url databases')
+        DATABASE_URL: Joi.string().required().description('url databases')
     }).unknown();
 
-const {value: envVars, error} = envVar.prefs({error: {label: 'key'} } ).validate(process.env);
+const {value: envVars, error} = envVar.prefs({errors: {label: 'key'} } ).validate(process.env);
 
 if (error){
     console.log(`Configuracion invalida error ->: ${error.message}`);

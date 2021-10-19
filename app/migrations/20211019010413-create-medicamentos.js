@@ -1,28 +1,24 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Listmedicamentos', {
-      id_medicamentos: {
+    await queryInterface.createTable('medicamentos', {
+      id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      Nombre: {
-        type: Sequelize.STRING,
-        allowNull: false
+      nombre: {
+        type: Sequelize.STRING
       },
-      Descripcion: {
-        type: Sequelize.STRING,
-        allowNull: false
+      descripcion: {
+        type: Sequelize.STRING
       },
-      Precio: {
-        type: Sequelize.FLOAT,
-        allowNull: false
+      precio: {
+        type: Sequelize.FLOAT
       },
-      Imagen: {
-        type: Sequelize.STRING,
-        allowNull: false
+      imagen: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
@@ -35,6 +31,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Listmedicamentos');
+    await queryInterface.dropTable('medicamentos');
   }
 };
