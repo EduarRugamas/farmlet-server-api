@@ -2,7 +2,7 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('medicamentos', {
-      id_medicamento: {
+      id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
@@ -17,8 +17,7 @@ module.exports = {
         allowNull: false
       },
       precio: {
-        type: Sequelize.FLOAT,
-        allowNull: false
+        type: Sequelize.FLOAT
       },
       imagen: {
         type: Sequelize.STRING,
