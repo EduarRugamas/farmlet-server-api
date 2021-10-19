@@ -67,3 +67,5 @@ package-lock.json
 
 #omitir config.json
 config.json
+
+.idea/workspace.xml
