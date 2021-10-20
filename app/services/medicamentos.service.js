@@ -5,6 +5,7 @@ const sequelize = require('../db');
 
 //constantes de modelos
 const { medicamentos } = require('../models');
+const {stringify} = require("nodemon/lib/utils");
 
 
 const getStatus = (status) =>{
@@ -21,9 +22,7 @@ const getStatus = (status) =>{
     }
 }
 
-
 const createMedicamentos = async (medicamentosBody) => {
-
 
     let medicamentosData;
 
@@ -33,7 +32,7 @@ const createMedicamentos = async (medicamentosBody) => {
             console.log('El cuerpo esta vacio');
             return JSON.stringify({
                 code: `${httpStatus.NO_CONTENT}`,
-                message: 'Struct JSON empty 204'
+                message: 'Struct JSON empty'
             });
         }else {
             medicamentosData = await medicamentos.create(medicamentosBody)
@@ -42,9 +41,30 @@ const createMedicamentos = async (medicamentosBody) => {
     }catch (error) {
         throw console.log(`${httpStatus.BAD_REQUEST}, Ah Ocurrido un Error -> ${error}`);
     }
-
 };
+
+const getMedicamentos = async () => {
+        try {
+            const medicamentos = await medicamentos.findAll();
+            if (!_.isEmpty(medicamentos)){
+                return medicamentos;
+            }
+
+        }catch (error) {
+            return
+                // noinspection UnreachableCodeJS
+            JSON.stringify({
+                   code: `${httpStatus.NO_CONTENT}`,
+                   message: error
+                })
+            // noinspection JSVoidFunctionReturnValueUsed
+            throw console.log(`CODE: ${httpStatus.NO_CONTENT}, -> error: ${error}`)
+
+        }
+}
+
 
 module.exports = {
     createMedicamentos,
+    getMedicamentos
 }

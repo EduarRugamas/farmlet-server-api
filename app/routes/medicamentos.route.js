@@ -7,6 +7,10 @@ router
     .route('/create')
     .post(medicamentosController.createMedicamento);
 
+router
+    .route('/')
+    .get(medicamentosController.getMedicamentos);
+
 
 
 

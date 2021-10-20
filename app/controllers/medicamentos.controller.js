@@ -17,10 +17,23 @@ const createMedicamento = catchAsync( async (req, res) => {
     }
 });
 
+const getMedicamentos = catchAsync( async (req, res) => {
+    const medic = await medicamentosService.getMedicamentos();
+   if (!_.isEmpty(medic)){
+       res.status(httpStatus.OK).send(medic);
+   } else {
+       res.status(httpStatus.NO_CONTENT).send({
+           CODE: `${httpStatus.NO_CONTENT}`,
+           message: 'No se encontraron registros'
+       });
+   }
+});
+
 
 
 
 module.exports = {
     createMedicamento,
+    getMedicamentos
 
 }
