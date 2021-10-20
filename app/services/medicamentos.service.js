@@ -24,6 +24,7 @@ const getStatus = (status) =>{
 
 const createMedicamentos = async (medicamentosBody) => {
 
+
     let medicamentosData;
 
     try {
