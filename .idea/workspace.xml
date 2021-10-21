@@ -4,8 +4,6 @@
     <list default="true" id="983ca2f9-aad4-4ba7-9fe5-f1bb27376a6d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/medicamentos.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/medicamentos.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/routes/medicamentos.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/medicamentos.route.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/services/medicamentos.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/medicamentos.service.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,7 +47,7 @@
       <workItem from="1634603074146" duration="7329000" />
       <workItem from="1634655811375" duration="97000" />
       <workItem from="1634656050118" duration="2738000" />
-      <workItem from="1634738513143" duration="3223000" />
+      <workItem from="1634738513143" duration="9721000" />
     </task>
     <servers />
   </component>

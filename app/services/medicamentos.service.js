@@ -4,11 +4,11 @@ const sequelize = require('../db');
 
 
 //constantes de modelos
-const { medicamentos } = require('../models');
-const {stringify} = require("nodemon/lib/utils");
+const {medicamentos} = require('../models');
+const {removeUnnecessaryItems} = require("@babel/preset-env/lib/filter-items");
+const {toJSON} = require("lodash/seq");
 
-
-const getStatus = (status) =>{
+const getStatus = (status) => {
     try {
         const row = {
             where: {
@@ -17,7 +17,7 @@ const getStatus = (status) =>{
             order: [['id', 'DESC']]
         };
         return row;
-    }catch (error) {
+    } catch (error) {
         throw console.log(`${httpStatus.INTERNAL_SERVER_ERROR}, Ah ocurrido un error -> ${error}`)
     }
 }
@@ -28,40 +28,57 @@ const createMedicamentos = async (medicamentosBody) => {
 
     try {
         //validar el body vacio
-        if ( _.isEmpty(medicamentosBody) ){
+        if (_.isEmpty(medicamentosBody)) {
             console.log('El cuerpo esta vacio');
             return JSON.stringify({
                 code: `${httpStatus.NO_CONTENT}`,
                 message: 'Struct JSON empty'
             });
-        }else {
+        } else {
             medicamentosData = await medicamentos.create(medicamentosBody)
             return medicamentosData;
         }
-    }catch (error) {
+    } catch (error) {
+        // noinspection JSVoidFunctionReturnValueUsed
         throw console.log(`${httpStatus.BAD_REQUEST}, Ah Ocurrido un Error -> ${error}`);
     }
 };
 
 const getMedicamentos = async () => {
-        try {
-            const medicamentos = await medicamentos.findAll();
-            if (!_.isEmpty(medicamentos)){
-                return medicamentos;
+    try {
+        const getMedic = await medicamentos.findAll();
+
+            return getMedic;
+
+    } catch (error) {
+        // noinspection JSVoidFunctionReturnValueUsed
+        throw console.log(`CODE: ${httpStatus.NO_CONTENT}, -> error: ${error}`);
+    }
+};
+
+const getMedicamentosById = async (id) => {
+    try {
+        const medic = await medicamentos.findOne({
+            where: {
+                id: id
             }
-
-        }catch (error) {
-            return
-                // noinspection UnreachableCodeJS
-            JSON.stringify({
-                   code: `${httpStatus.NO_CONTENT}`,
-                   message: error
-                })
-            // noinspection JSVoidFunctionReturnValueUsed
-            throw console.log(`CODE: ${httpStatus.NO_CONTENT}, -> error: ${error}`)
-
+        });
+        if (!_.isEmpty(medicamentos)) {
+            return medic;
         }
-}
+
+    } catch (error) {
+        return
+        // noinspection UnreachableCodeJS
+        JSON.stringify({
+            code: `${httpStatus.NO_CONTENT}`,
+            message: error
+        });
+        // noinspection JSVoidFunctionReturnValueUsed
+        throw console.log(`CODE: ${httpStatus.NO_CONTENT}, -> error: ${error}`)
+    }
+    ;
+};
 
 
 module.exports = {
