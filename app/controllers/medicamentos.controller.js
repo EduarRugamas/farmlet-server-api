@@ -43,9 +43,16 @@ const updateMedicamentos = catchAsync( async (req, res) => {
     res.status(httpStatus.OK).send(updateMedic);
 });
 
+const deleteMedicamento = catchAsync( async (req, res) => {
+    const deleteMedic = await medicamentosService.deleteMedicamento(req.params.id);
+
+    res.send(deleteMedic)
+});
+
 module.exports = {
     createMedicamento,
     getMedicamentos,
     getMedicamentosByID,
-    updateMedicamentos
+    updateMedicamentos,
+    deleteMedicamento
 }

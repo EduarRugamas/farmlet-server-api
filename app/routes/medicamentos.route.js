@@ -17,7 +17,8 @@ router.route('/id/:id')
 router.route('/update/:id')
     .patch(medicamentosController.updateMedicamentos);
 
-
+router.route('/delete/:id')
+    .delete(medicamentosController.deleteMedicamento)
 
 
 
