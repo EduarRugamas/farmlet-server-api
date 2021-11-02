@@ -4,6 +4,8 @@ const {medicamentosService} = require('../services');
 const _ = require('lodash');
 
 
+
+
 const createMedicamento = catchAsync( async (req, res) => {
     const medic = await medicamentosService.createMedicamentos(req.body);
 
@@ -20,17 +22,30 @@ const createMedicamento = catchAsync( async (req, res) => {
 const getMedicamentos = catchAsync( async (req, res) => {
     const medic = await medicamentosService.getMedicamentos();
    if (_.isEmpty(medic)){
-       res.status(httpStatus.NO_CONTENT).send({
-           CODE: `${httpStatus.NO_CONTENT}`,
-           message: 'No hay contenido'
-       });
+       res.status(httpStatus.NO_CONTENT).send(medic);
    } else {
        res.status(httpStatus.OK).send(medic);
    }
 });
 
+const getMedicamentosByID = catchAsync( async (req, res) => {
+    const medic = await medicamentosService.getMedicamentosById(req.params.id);
+
+    if (_.isEmpty(medic)){
+        res.status(httpStatus.NO_CONTENT).send(medic);
+    }else {
+        res.status(httpStatus.OK).send(medic);
+    }
+});
+
+const updateMedicamentos = catchAsync( async (req, res) => {
+    const updateMedic = await medicamentosService.updateMedicamento(req.params.id, req.body);
+    res.status(httpStatus.OK).send(updateMedic);
+});
+
 module.exports = {
     createMedicamento,
-    getMedicamentos
-
+    getMedicamentos,
+    getMedicamentosByID,
+    updateMedicamentos
 }

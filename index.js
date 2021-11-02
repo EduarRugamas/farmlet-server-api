@@ -3,6 +3,7 @@ const { Client } = require('pg');
 const config =  require('./app/config/config');
 const sequelize = require('./app/db');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 const app = express();
 const routes = require('./app/routes');
 
@@ -23,6 +24,7 @@ const database_url = config[env].url;
 
          server = app.listen(config.port, ()=> {
             console.log(`Server init PORT -> ${config.port}`);
+            console.log('https://localhost:5003/v1/')
          });
      }).catch( (error) => {
         console.log(`Error al conectar a la base de datos postgres-> ${error}`);
@@ -36,8 +38,8 @@ const database_url = config[env].url;
  app.use(cors());
  app.options('*', cors());
 
- app.use('/v1', routes);
-
  if (config.env === 'production'){
+     app.use('/v1', routes);
+ }else if(config.env === 'development'){
      app.use('/v1', routes);
  }

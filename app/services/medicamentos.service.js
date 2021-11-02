@@ -1,3 +1,5 @@
+// noinspection JSVoidFunctionReturnValueUsed
+
 const httpStatus = require('http-status');
 const _ = require('lodash');
 const sequelize = require('../db');
@@ -5,8 +7,7 @@ const sequelize = require('../db');
 
 //constantes de modelos
 const {medicamentos} = require('../models');
-const {removeUnnecessaryItems} = require("@babel/preset-env/lib/filter-items");
-const {toJSON} = require("lodash/seq");
+
 
 const getStatus = (status) => {
     try {
@@ -47,41 +48,56 @@ const createMedicamentos = async (medicamentosBody) => {
 const getMedicamentos = async () => {
     try {
         const getMedic = await medicamentos.findAll();
-
-            return getMedic;
-
+            if (_.isEmpty(getMedic)){
+                return error.Error204
+            }else {
+                return getMedic;
+            }
     } catch (error) {
         // noinspection JSVoidFunctionReturnValueUsed
         throw console.log(`CODE: ${httpStatus.NO_CONTENT}, -> error: ${error}`);
     }
 };
-
+//obtener por id los medicamentos
 const getMedicamentosById = async (id) => {
     try {
-        const medic = await medicamentos.findOne({
+        return await medicamentos.findOne({
             where: {
                 id: id
             }
         });
-        if (!_.isEmpty(medicamentos)) {
-            return medic;
-        }
 
     } catch (error) {
-        return
-        // noinspection UnreachableCodeJS
-        JSON.stringify({
-            code: `${httpStatus.NO_CONTENT}`,
-            message: error
-        });
         // noinspection JSVoidFunctionReturnValueUsed
         throw console.log(`CODE: ${httpStatus.NO_CONTENT}, -> error: ${error}`)
     }
-    ;
+
 };
+
+//Update de los medicamentos por id
+const updateMedicamento = async (idMedicamentos, bodyMedicamento) => {
+    try {
+        const toUpdateMedicamento = await getMedicamentos(idMedicamentos);
+
+        if (!toUpdateMedicamento){
+            throw console.log(`Code: ${httpStatus.NO_CONTENT}, -> No hay contenido`);
+        }
+
+        const medicInformation = {
+
+        }
+
+        const updateMedicamento = await medicamentos.update();
+
+    }catch (error) {
+
+    }
+}
 
 
 module.exports = {
     createMedicamentos,
-    getMedicamentos
+    getMedicamentos,
+    getMedicamentosById,
+    updateMedicamento
 }
