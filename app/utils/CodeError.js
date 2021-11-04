@@ -30,11 +30,17 @@ const OK200Delete = {
     messages: 'Registro eliminado correctamente'
 }
 
+const Error404_not_content = {
+    code: httpStatus.NOT_FOUND,
+    messages: 'No existe contenido'
+}
+
 module.exports = {
     Error204,
     Error404,
     OK200Delete,
     Error_delete,
     Error404_notFound,
-    Ok200
+    Ok200,
+    Error404_not_content
 }

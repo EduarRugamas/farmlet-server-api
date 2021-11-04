@@ -20,11 +20,11 @@ const createPromocion = async (promocionBody) => {
     }
 };
 
-const getPromocion = async () => {
+const getPromociones = async () => {
     try {
         const promo = await promociones.findAll();
         if (_.isEmpty(promo)){
-            return error.Error404_notFound;
+            return error.Error404_not_content;
         }else{
             return promo;
         }
@@ -33,7 +33,21 @@ const getPromocion = async () => {
     }
 };
 
+const getPromocionById = async (ID) => {
+  try {
+      const promo = await promociones.findOne( {
+          where: {
+              id: ID
+          }
+      });
+        return promo;
+  }  catch (e) {
+        throw console.log(`Code: ${httpStatus.NOT_FOUND}, error: -> ${e}`);
+  }
+};
+
 module.exports = {
     createPromocion,
-    getPromocion
+    getPromociones,
+    getPromocionById
 };

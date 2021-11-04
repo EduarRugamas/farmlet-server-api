@@ -7,6 +7,8 @@ router.route('/create')
     .post(promocionesController.createPromocion);
 router.route('/')
     .get(promocionesController.getPromocion);
+router.route('/id/:id')
+    .get(promocionesController.getPromocionesById);
 
 
 module.exports = router;
