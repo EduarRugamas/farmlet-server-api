@@ -22,4 +22,4 @@ const sequelize = require('../db')
     modelName: 'promociones',
   });
 
-export default promociones
+module.exports = promociones;

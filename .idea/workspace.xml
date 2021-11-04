@@ -2,15 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="983ca2f9-aad4-4ba7-9fe5-f1bb27376a6d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/controllers/promociones.controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/routes/promociones.route.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/services/promociones.service.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/migrations/20211104011410-create-promociones.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/migrations/20211104011410-create-promociones.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/promociones.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/promociones.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/promociones.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/promociones.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/services/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/promociones.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/promociones.service.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
