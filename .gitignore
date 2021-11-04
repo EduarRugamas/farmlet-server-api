@@ -69,3 +69,4 @@ package-lock.json
 config.json
 
 .idea/workspace.xml
+.idea/shelf/
