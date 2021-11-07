@@ -35,6 +35,11 @@ const Error404_not_content = {
     messages: 'No existe contenido'
 }
 
+const ErrorUpdate = {
+    code: httpStatus.OK,
+    messages: 'Registro actualizado correctamente'
+};
+
 module.exports = {
     Error204,
     Error404,
@@ -42,5 +47,6 @@ module.exports = {
     Error_delete,
     Error404_notFound,
     Ok200,
-    Error404_not_content
+    Error404_not_content,
+    ErrorUpdate
 }

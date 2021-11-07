@@ -10,6 +10,12 @@ router.route('/')
 router.route('/id/:id')
     .get(promocionesController.getPromocionesById);
 
+router.route('/update/:id')
+    .patch(promocionesController.updatePromociones);
+
+router.route('/delete/:id')
+    .delete(promocionesController.deletePromocion);
+
 
 module.exports = router;
 

@@ -35,8 +35,27 @@ const errores = require('../utils/CodeError');
 
     });
 
+    const updatePromociones = catchAsync( async (req, res) => {
+        const updatePromo = await promocionesService.updatePromocionesById(req.params.id, req.body);
+
+        res.status(httpStatus.OK).send(updatePromo)
+    });
+
+    const deletePromocion = catchAsync( async (req, res) => {
+       const deletePro  = await promocionesService.deletePromocion(req.params.id);
+
+       if (_.isEmpty(deletePro)){
+           res.status(httpStatus.NOT_FOUND);
+       }else {
+           res.status(httpStatus.OK).send(deletePro);
+       }
+
+    });
+
 module.exports = {
     createPromocion,
     getPromocion,
-    getPromocionesById
+    getPromocionesById,
+    updatePromociones,
+    deletePromocion
 }
