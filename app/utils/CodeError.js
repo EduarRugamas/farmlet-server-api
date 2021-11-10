@@ -19,10 +19,22 @@ const OK200Delete = {
     code: httpStatus.OK,
     messages: 'Registro eliminado correctamente'
 }
+const Error400UserExiste = {
+    code: httpStatus.BAD_REQUEST,
+    messages: 'El Email o Username ya existe'
+}
+
+const Error200Exitoso = {
+    code: httpStatus.OK,
+    messages: 'Registro actualizado exitosamente'
+}
+
 
 module.exports = {
     Error204,
     Error404,
     OK200Delete,
-    Error_delete
+    Error_delete,
+    Error400UserExiste,
+    Error200Exitoso
 }
