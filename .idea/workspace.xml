@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="983ca2f9-aad4-4ba7-9fe5-f1bb27376a6d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/medicamentos.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/medicamentos.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/routes/medicamentos.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/medicamentos.route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/promociones.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/promociones.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routes/promociones.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/promociones.route.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/services/medicamentos.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/medicamentos.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/promociones.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/promociones.service.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/utils/CodeError.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/utils/CodeError.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -31,6 +33,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/.env" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -54,6 +57,8 @@
       <workItem from="1634656050118" duration="2738000" />
       <workItem from="1634738513143" duration="17160000" />
       <workItem from="1635808976819" duration="9600000" />
+      <workItem from="1636045870354" duration="11487000" />
+      <workItem from="1636304174188" duration="432000" />
     </task>
     <servers />
   </component>

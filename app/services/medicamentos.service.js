@@ -3,7 +3,7 @@
 const httpStatus = require('http-status');
 const _ = require('lodash');
 const sequelize = require('../db');
-const error = require('../utils/CodeError')
+const error = require('../utils/CodeError');
 
 
 //constantes de modelos
@@ -81,7 +81,7 @@ const updateMedicamento = async (idMedicamentos, bodyMedicamentoUpdate) => {
         let precioMedicamento = bodyMedicamentoUpdate.precio
 
         if (!toUpdateMedicamento){
-            throw console.log(`Code: ${httpStatus.NO_CONTENT}, -> No hay existe este registro para actualizar`);
+            throw console.log(`Code: ${httpStatus.NO_CONTENT}, -> No existe este registro para actualizar`);
         }
 
         if (_.isString(bodyMedicamentoUpdate.precio)){

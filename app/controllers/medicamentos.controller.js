@@ -3,9 +3,6 @@ const catchAsync = require('../utils/catchAsync');
 const {medicamentosService} = require('../services');
 const _ = require('lodash');
 
-
-
-
 const createMedicamento = catchAsync( async (req, res) => {
     const medic = await medicamentosService.createMedicamentos(req.body);
 
