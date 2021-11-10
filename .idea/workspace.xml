@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="983ca2f9-aad4-4ba7-9fe5-f1bb27376a6d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/controllers/auth.controller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/routes/auth.route.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/services/auth.service.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/medicamentos.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/medicamentos.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/routes/medicamentos.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/medicamentos.route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/services/medicamentos.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/medicamentos.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/utils/CodeError.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/utils/CodeError.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +14,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="develop" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitToolBoxStore">
