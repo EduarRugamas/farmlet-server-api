@@ -6,8 +6,18 @@ const Error204 = {
 };
 
 const Error404 = {
-    code: httpStatus.NO_CONTENT,
+    code: httpStatus.NOT_FOUND,
     messages: 'Url no encotrada'
+};
+
+const Ok200 = {
+    code: httpStatus.CREATED,
+    messages: 'Registro agregado correctamente'
+};
+
+const Error404_notFound = {
+    code: httpStatus.NOT_FOUND,
+    messages: 'Campos Vacios'
 };
 
 const Error_delete = {
@@ -40,6 +50,16 @@ const Error400TokenEmail = {
 }
 
 
+const Error404_not_content = {
+    code: httpStatus.NOT_FOUND,
+    messages: 'No existe contenido'
+}
+
+const ErrorUpdate = {
+    code: httpStatus.OK,
+    messages: 'Registro actualizado correctamente'
+};
+
 module.exports = {
     Error204,
     Error404,
@@ -49,4 +69,8 @@ module.exports = {
     Error200Exitoso,
     Error400Token,
     Error400TokenEmail
+    Error404_notFound,
+    Ok200,
+    Error404_not_content,
+    ErrorUpdate
 }
