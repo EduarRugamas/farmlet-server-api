@@ -6,7 +6,7 @@ const { authService, userService, tokenService } = require('../services');
 const register = catchAsync( async (req, res) => {
    const user = await userService.createUser(req.body);
    const tokens = await tokenService.generateAuthTokens(user);
-   res.status(httpStatus.CREATED).send({user, tokens});
+   res.status(httpStatus.CREATED).send( {user, tokens} );
 });
 
 const login = catchAsync( async (req, res) => {
@@ -15,6 +15,7 @@ const login = catchAsync( async (req, res) => {
     const user = await authService.loginUserWithEmailAndPassword(email, password, registrationToken);
 
     const tokens = await tokenService.generateAuthTokens(user);
+
     const userData = _.omit(user.dataValues, 'password');
     const result = { user: userData, token: tokens };
 

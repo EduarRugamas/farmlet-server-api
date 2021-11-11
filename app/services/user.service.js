@@ -59,7 +59,7 @@ const updateUserById = async (userId, updateBody) => {
 
     const getUser = await user.findOne({
         where: {
-            id,
+            userId,
             status: {
                 [Op.notIn]: [3, 4],
             },

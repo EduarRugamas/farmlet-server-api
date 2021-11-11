@@ -5,6 +5,12 @@
       <change afterPath="$PROJECT_DIR$/app/config/roles.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/config/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/auth.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/auth.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/middlewares/auth.middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/middlewares/auth.middleware.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routes/medicamentos.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/medicamentos.route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routes/user.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/user.route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/token.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/token.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/user.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/user.service.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

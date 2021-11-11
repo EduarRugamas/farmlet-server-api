@@ -8,8 +8,8 @@ const userController = require('../controllers/user.controller');
 const router = express.Router();
 
 router
-    .route('/create/user')
-    .post(auth('manageOwnData'),validate(userValidation.createUser), userController.createUser);
+    .route('/create')
+    .post(auth('manageOwnData'), userController.createUser);
 
 router.route('/getUser')
     .get(auth('getUsers'), userController.getUsers);

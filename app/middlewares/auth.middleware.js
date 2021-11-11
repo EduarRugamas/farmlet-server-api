@@ -9,6 +9,7 @@ const { token } = require('../models');
 const verifyCallBack = (req, resolve, reject, requiredRights, strictAuth) => async (err, user, info) => {
 
     if (err || info || !user){
+        console.log("Error aqui")
         return reject(new CodesError(httpStatus.UNAUTHORIZED, 'Por favor Autenticate'));
     }
     req.user = user;
@@ -24,6 +25,7 @@ const verifyCallBack = (req, resolve, reject, requiredRights, strictAuth) => asy
         const userRights = roleRights.get(user.role);
         const hasRequiredRights = requiredRights.every( (requiredRights) => userRights.includes(requiredRights) );
         if (!hasRequiredRights && req.params.userId !== user.id){
+
             return reject(new CodesError(httpStatus.FORBIDDEN, 'Forbidden'))
         }
     }

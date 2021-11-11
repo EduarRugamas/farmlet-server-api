@@ -1,11 +1,12 @@
 const express = require('express');
+const auth = require('../middlewares/auth.middleware');
 const {medicamentosController} = require('../controllers');
 
 const router = express.Router();
 
 router
     .route('/create')
-    .post(medicamentosController.createMedicamento);
+    .post(auth('manageOwnData'), medicamentosController.createMedicamento);
 
 router
     .route('/')
@@ -15,10 +16,10 @@ router.route('/id/:id')
     .get(medicamentosController.getMedicamentosByID);
 
 router.route('/update/:id')
-    .patch(medicamentosController.updateMedicamentos);
+    .patch(auth('manageOwnData'), medicamentosController.updateMedicamentos);
 
 router.route('/delete/:id')
-    .delete(medicamentosController.deleteMedicamento)
+    .delete(auth('manageMedicamentos'), medicamentosController.deleteMedicamento)
 
 
 
