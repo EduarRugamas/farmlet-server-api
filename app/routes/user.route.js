@@ -9,7 +9,7 @@ const router = express.Router();
 
 router
     .route('/create/user')
-    .post(auth('manageOwnData'), userController.createUser);
+    .post(auth('manageOwnData'),validate(userValidation.createUser), userController.createUser);
 
 router.route('/getUser')
     .get(auth('getUsers'), userController.getUsers);

@@ -4,7 +4,7 @@ const Joi = require('joi');
 
 dotev.config( {path: path.join(__dirname, '../../.env') } );
 
-const envVar = Joi.object()
+const envVarsSchema = Joi.object()
     .keys({
         NODE_ENV: Joi.string().valid('production', 'development').required(),
         PORT: Joi.number().default(5000),
@@ -14,12 +14,12 @@ const envVar = Joi.object()
         JWT_REFRESH_EXPIRATION_DAYS: Joi.number().default(30).description('days after which refresh tokens expire')
     }).unknown();
 
-const {value: envVars, error} = envVar.prefs({errors: {label: 'key'} } ).validate(process.env);
+const {value: envVars, error} = envVarsSchema.prefs( { errors: { label: 'key' } } ).validate(process.env);
 
 if (error){
-    console.log(`Configuracion invalida error ->: ${error.message}`);
+    console.log(`Configuracion invalida error ->: ${error}`);
     console.log('archivo de file -> /config/config.js');
-    throw new Error(`Configuracion invalida error ->: ${error.message}`);
+    throw new Error(`Configuracion invalida error ->: ${error}`);
 }
 
 module.exports = {
@@ -38,7 +38,7 @@ module.exports = {
         }
     },
     jwt: {
-      secret: envVars.JWT_SECRET,
+        secret: envVars.JWT_SECRET,
         accessExpirationMinutes: envVars.JWT_ACCESS_EXPIRATION_MINUTES,
         refreshExpirationDays: envVars.JWT_REFRESH_EXPIRATION_DAYS,
         resetPasswordExpirationMinutes: 10
@@ -47,4 +47,4 @@ module.exports = {
         production: { idle: 10000, acquire: 60000, evict: 1000 },
         development: {idle:10000, acquire:60000, evict:1000}
     }
-}
+};

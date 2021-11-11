@@ -10,7 +10,7 @@ const createUser = async (userBody) => {
 
     if ( (await user.isEmailTaken(userBody.email)) || (await user.isUsernameTaken(userBody.username))){
         console.log('Email o username is already taken');
-        return error.Error400UserExiste;
+        throw new CodesError(httpStatus.BAD_REQUEST, 'Email or Username already taken');
     }
     const userCreate = await user.create(userBody);
     return userCreate;
@@ -20,7 +20,7 @@ const getUserById = async (id) => {
     try {
         const getUser = await user.findOne({
             where: {
-                id: id,
+                id,
                 status: {
                     [Op.notIn]: [3,4]
                 }
@@ -28,7 +28,7 @@ const getUserById = async (id) => {
         });
         return _.omit(getUser.dataValues, 'password');
     }catch (e) {
-        throw console.log(`CODE: ${httpStatus.INTERNAL_SERVER_ERROR}, Error: -> ${e}`);
+        throw new CodesError(httpStatus.INTERNAL_SERVER_ERROR, `Ah ocurrido un error: ${e}`);
     }
 };
 
@@ -51,11 +51,11 @@ const queryUsers = async (options) => {
         });
         return users;
     } catch (error) {
-        throw new CodesError(httpStatus.INTERNAL_SERVER_ERROR, `An error ocurred${error}`);
+        throw new CodesError(httpStatus.INTERNAL_SERVER_ERROR, `An error ocurred ${error}`);
     }
 };
 
-const updateUserById = async (id, updateBody) => {
+const updateUserById = async (userId, updateBody) => {
 
     const getUser = await user.findOne({
         where: {
@@ -68,25 +68,25 @@ const updateUserById = async (id, updateBody) => {
 
     if (!getUser) {
         console.log('usuario no encontrado');
-        return error.Error204;
+        throw new CodesError(httpStatus.NOT_FOUND, 'User not found');
     }
 
-    if (updateBody.email && (await user.isEmailTaken(updateBody.email, id))){
+    if (updateBody.email && (await user.isEmailTaken(updateBody.email, userId))){
         console.log('Email ya existe');
-        return error.Error400UserExiste;
+        throw new CodesError(httpStatus.NOT_FOUND, 'Email already taken');
     }
 
     Object.assign(user, updateBody);
     await getUser.save();
-    return error.Error200Exitoso;
+    return getUser;
 
 };
 
-const deleteUserById = async (id) => {
-    const getUser = getUserById(id);
+const deleteUserById = async (userId) => {
+    const getUser = getUserById(userId);
     if (!getUser) {
         console.log('Usuario no existente');
-        return error.Error204
+        throw new CodesError(httpStatus.NOT_FOUND, 'User not found');
     }
 
     getUser.update({status: 4})

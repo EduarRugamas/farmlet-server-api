@@ -3,8 +3,11 @@ const morgan = require('morgan');
 const { Client } = require('pg');
 const config =  require('./app/config/config');
 const sequelize = require('./app/db');
+const passport = require('passport');
+const httpStatus = require('http-status')
+const {jwtStrategy} = require('./app/config/passport');
+const CodesError = require('./app/utils/CodesError');
 const cors = require('cors');
-const bodyParser = require('body-parser');
 const app = express();
 const routes = require('./app/routes');
 
@@ -41,9 +44,16 @@ const database_url = config[env].url;
 
  app.use(morgan('dev'));
 
+ app.use(passport.initialize());
+ passport.use('jwt', jwtStrategy);
+
 
  if (config.env === 'production'){
      app.use('/v1', routes);
  }else if(config.env === 'development'){
      app.use('/v1', routes);
  }
+
+app.use((req, res, next) => {
+    next(new CodesError(httpStatus.NOT_FOUND, 'Not found'));
+});

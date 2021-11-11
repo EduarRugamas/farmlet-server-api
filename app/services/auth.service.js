@@ -12,7 +12,7 @@ const loginUserWithEmailAndPassword = async (email, password, Token) => {
         throw new CodesError(httpStatus.UNAUTHORIZED, 'Correo o Contrasena Incorrectos');
     }
     if (Token){
-        await notificationService.refreshToken(user.id, Token);
+        notificationService.refreshToken(user.id, Token);
     }
 
     return user;

@@ -4,11 +4,12 @@ const httpStatus = require('http-status');
 const config = require('../config/config');
 const userService = require('./user.service');
 const error = require('../utils/CodeError');
+const CodesError = require('../utils/CodesError');
 const { token } = require('../models');
 
-const generateToken =  ( Id, expires, secret=config.jwt.secret ) => {
+const generateToken =  ( userId, expires, secret = config.jwt.secret ) => {
     const payload = {
-        sub: Id,
+        sub: userId,
         iat: moment().unix(),
         exp: expires.unix()
     }
@@ -16,10 +17,10 @@ const generateToken =  ( Id, expires, secret=config.jwt.secret ) => {
 };
 
 
-const saveToken = async (Token, Id, expire, type, blacklisted) => {
+const saveToken = async (Token, userId, expire, type, blacklisted) => {
     const tokenDoc = await  token.create({
         Token,
-        user: Id,
+        user: userId,
         expires: expire.toDate(),
         type,
         blacklisted
@@ -29,10 +30,10 @@ const saveToken = async (Token, Id, expire, type, blacklisted) => {
 
 const verifyToken = async ( Token, type ) => {
     const payload = jwt.verify(token, config.jwt.secret);
-    const tokenDoc = await token.findOne({where: {  Token, type, user: payload.sub, blacklisted: false  } });
+    const tokenDoc = await token.findOne({ where: {  Token, type, user: payload.sub, blacklisted: false  } });
     if (!tokenDoc){
         console.log('Token no encontrado');
-        return error.Error400Token;
+        throw new Error('Token not found');
     }
 
     return tokenDoc;
@@ -66,13 +67,13 @@ const generateResetPasswordToken = async (email) => {
 
   if (!user) {
       console.log('user not found with this email');
-      return error.Error400TokenEmail;
+      throw new CodesError(httpStatus.NOT_FOUND, 'Usuario no encontrado con este Email');
   }
 
   const expires = moment().add(config.jwt.resetPasswordExpirationMinutes, 'minutes');
   const resetPasswordToken = generateToken(user.id, expires);
 
-  await saveToken(resetPasswordToken, user.id, expires, 'resetpassword');
+  await saveToken(resetPasswordToken, user.id, expires, 'resetPassword');
 
   return resetPasswordToken;
 };
