@@ -68,7 +68,7 @@ module.exports = {
     Error400UserExiste,
     Error200Exitoso,
     Error400Token,
-    Error400TokenEmail
+    Error400TokenEmail,
     Error404_notFound,
     Ok200,
     Error404_not_content,
