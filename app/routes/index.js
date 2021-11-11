@@ -1,11 +1,8 @@
 const express = require('express');
 const medicamentosRoute = require('./medicamentos.route');
-
 const userRoute = require('./user.route');
 const authRoute = require('./auth.route');
-
 const promocionesRoute = require('./promociones.route');
-
 
 const router = express.Router();
 
