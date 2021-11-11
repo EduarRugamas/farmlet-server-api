@@ -2,6 +2,7 @@ const httpStatus = require('http-status');
 const { Op} = require('sequelize');
 const _ =  require('lodash');
 const error = require('../utils/CodeError');
+const CodesError = require('../utils/CodesError');
 const {user} = require('../models');
 
 
@@ -42,7 +43,19 @@ const getUserByEmail = async (email) => {
     });
 };
 
-const UpdateUserById = async (id, updateBody) => {
+const queryUsers = async (options) => {
+    try {
+        const results = await user.paginate(options);
+        const users = _.map(results.docs, function (result) {
+            return _.omit(result.dataValues, 'password');
+        });
+        return users;
+    } catch (error) {
+        throw new CodesError(httpStatus.INTERNAL_SERVER_ERROR, `An error ocurred${error}`);
+    }
+};
+
+const updateUserById = async (id, updateBody) => {
 
     const getUser = await user.findOne({
         where: {
@@ -69,7 +82,7 @@ const UpdateUserById = async (id, updateBody) => {
 
 };
 
-const deleteUser = async (id) => {
+const deleteUserById = async (id) => {
     const getUser = getUserById(id);
     if (!getUser) {
         console.log('Usuario no existente');
@@ -85,7 +98,8 @@ module.exports = {
     createUser,
     getUserById,
     getUserByEmail,
-    UpdateUserById,
-    deleteUser
+    updateUserById,
+    deleteUserById,
+    queryUsers
 
 };

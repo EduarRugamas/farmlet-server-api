@@ -29,6 +29,16 @@ const Error200Exitoso = {
     messages: 'Registro actualizado exitosamente'
 }
 
+const Error400Token = {
+    code: httpStatus.BAD_REQUEST,
+    messages: 'Token no encontrado'
+}
+
+const Error400TokenEmail = {
+    code: httpStatus.BAD_REQUEST,
+    messages: 'Usuario no encontrado con este email'
+}
+
 
 module.exports = {
     Error204,
@@ -36,5 +46,7 @@ module.exports = {
     OK200Delete,
     Error_delete,
     Error400UserExiste,
-    Error200Exitoso
+    Error200Exitoso,
+    Error400Token,
+    Error400TokenEmail
 }

@@ -8,7 +8,9 @@ roleRights.set(roles[0], [
     'getPromociones',
     'managePromociones',
     'getCarrito',
-    'manageCarrito'
+    'manageCarrito',
+    'getUsers',
+    'manageUsers'
 ]);
 
 module.exports = {
